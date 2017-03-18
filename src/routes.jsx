@@ -7,7 +7,6 @@ import {
 import AppContainer from './App';
 // import Courses from './components/Courses';
 // import Rooms from './components/Rooms';
-// import createBrowserHistory from 'history/createBrowserHistory'
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 const Routes = (
@@ -35,7 +34,7 @@ const Routes = (
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
-            <Route exact path="/" component={AppContainer} />
+            <Route exact path="/" component={AppContainer} />            
         </div>
     </Router>
 );

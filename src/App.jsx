@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Col, Grid, Row } from 'react-bootstrap';
+import { ModalTest } from './components/Modal';
 
 export default class AppContainer extends Component {
 
   render() {
-    const {children} = this.props;
     return (
       <Grid fluid={true}>
         <Row>
           <div className="App">
             <Col xs={12}>
-             {children}
+              <ModalTest />
             </Col>
           </div>
         </Row>
