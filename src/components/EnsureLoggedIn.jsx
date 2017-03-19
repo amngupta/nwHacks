@@ -100,31 +100,22 @@ authenticate() {
 
   register = () => {
     let companyInfo = {
-      name: this.name.value,
-      email: this.loginID.value,
-      password: this.password.value
+      "name": this.name.value,
+      "email": this.loginID.value,
+      "password": this.password.value
     }
     var data = new FormData();
     data.append( "json", JSON.stringify( companyInfo ) );
     let self = this;
-    fetch('http://kimchifriedrice.mybluemix.net/company/create',
-            {   method: 'POST',
-                mode: 'no-cors',
-                 body: data
-             }
-           )
-      .then( (response) => {
-          self.username.value = self.loginID.value;
-          self.authenticate()
-          console.log(response);
-          fakeAuth.authenticate(() => {
-            self.setState({ redirectToReferrer: true })
-          })
-        })
-      .catch(err=>{
-        console.error(err);
-      })
-    
+    fetch('http://kimchifriedrice.mybluemix.net/company/create', {
+    method: 'POST',
+    body: JSON.stringify(companyInfo)
+    }).then(res=>res.json())
+    .then(obj=>{
+               fakeAuth.setSignIn(true);
+          self.setState({ redirectToReferrer: true })
+    })
+    .catch(er=>console.log(er))
   }
 
   render() {
