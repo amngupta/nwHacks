@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
 import { Row, Modal, Button, Col, FormControl, FormGroup } from 'react-bootstrap';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
-
+import Dropdown from 'react-dropdown';
 import CardReactFormContainer from 'card-react';
 import './card.css';
 
@@ -24,20 +24,23 @@ class ModalTest extends Component {
             expiry: this.expiry.value
         }
         {/* Use API to submit the UserData*/}
+        this.setState({ showModal: false });
     }
 
     selectCountry(val) {
         this.setState({ country: val });
     }
 
+    selectRegion(val) {
+        this.setState({ region: val });
+    }
+
+
+
     goNext() {
         this.setState({
             page: true
         });
-    }
-
-    selectRegion(val) {
-        this.setState({ region: val });
     }
 
     close() {
@@ -112,7 +115,8 @@ class ModalTest extends Component {
                     <FormControl
                         type="text"
                         placeholder="Address Line 2" />
-                    <br />        
+                    <br />
+
                     <div className="col-sm-6">
                         <div className="col-sm-12">
                             <CountryDropdown
