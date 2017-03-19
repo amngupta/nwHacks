@@ -3,7 +3,8 @@ import {
     BrowserRouter as Router,
     Route, Redirect,
     Link, browserHistory, withRouter
-} from 'react-router-dom'
+} from 'react-router-dom';
+import { Row, Modal, Button, Col, FormControl, FormGroup } from 'react-bootstrap';
 
 const fakeAuth = {
   isAuthenticated: false,
@@ -57,10 +58,31 @@ export class Login extends Component {
     })
   }
 
+  signup = () => {
+    fakeAuth.authenticate(() => {
+      this.setState({ redirectToReferrer: true })
+    })
+  }
+
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } }
     const { redirectToReferrer } = this.state
     
+    const loginForm = (
+      <form>
+        <FormGroup>
+          <FormControl
+            type="text"
+            placeholder="Login Name"
+          />
+          <FormControl
+            type="password"
+            placeholder="password"
+          />
+        </FormGroup>
+      </form>
+    )
+
     if (redirectToReferrer) {
       return (
         <Redirect to={from}/>
@@ -70,10 +92,16 @@ export class Login extends Component {
     return (
       <div>
         <p>You must log in to view the page at {from.pathname}</p>
-        <button onClick={this.login}>Log in</button>
+
+        {loginForm}
+
+        <Button onClick={this.login} bsStyle="success">Log in</Button>
+        <Button onClick={this.signup} bsStyle="primary">Sign Up</Button>
       </div>
     )
   }
 }
 
+
+{/*------------------------------------------*/}
 export default EnsureLoggedInContainer
