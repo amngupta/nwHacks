@@ -30,28 +30,7 @@ function UserList() {
 		</Table>
 	);
 
-	return (
-	TableInstance
-		
-
-	/*<Grid>
-	    <Row className="show-grid" style={styles.header}>
-	      <Col xs={2} md={2} style={styles.center}>Name</Col>
-	      <Col xs={2} md={2} style={styles.center}>Email</Col>
-	      <Col xs={2} md={2} style={styles.center}>Tier</Col>
-	      <Col xs={2} md={2} style={styles.center}>Cost</Col>
-	      <Col xs={2} md={2} style={styles.center}>Start Date</Col>
-	      <Col xs={2} md={2} style={styles.center}>End Date</Col>
-	    </Row>
-		{users.map( function(user,i){
-		  return( 
-		  	<UserItem key={user.uuid} name={user.name} email={user.email} tier={user.tier} cost={user.cost} start={user.start} end={user.end} />
-		  )
-		})}
-	 </Grid> */
-	
-
-	)
+	return (TableInstance)
 }
 
 export default UserList
