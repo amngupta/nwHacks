@@ -10,7 +10,7 @@ export default class AppContainer extends Component {
       <Grid fluid={true}>
         <Row>
           <div className="App">
-            Welcome to Kimichi Fried Rice
+            <h1>Welcome to Kimichi Fried Rice</h1>
             <Col xs={12}>
              {children}
             </Col>
