@@ -24,12 +24,11 @@ const SubscriptionItem = (props) => {
             {subscription.features}
           </div>
         </div>
-
         <div style={styles.user}>
           <div>{`${subscription.usersNum} users`}</div>
+          <div>${subscription.cost}</div>
         </div>
       </div>
-
     </div>
   )
 }
