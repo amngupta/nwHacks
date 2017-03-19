@@ -25,6 +25,18 @@
   
 }
 
+.sidebar{
+  background-color: black;
+  float: left;
+  height: 1000px;
+  padding: 20%;
+}
+
+.leftbar{
+  float: right;
+  text-align: center;
+  overflow: auto;
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;

@@ -11,8 +11,7 @@ import CompanySubscriptionList from './components/CompanySubscriptions'
 import {EnsureLoggedInContainer, AuthButton, Login} from './components/EnsureLoggedIn'
 const styles = {
     menu: { width: '20%', float: 'center'},
-    menuUl: { listStyle: 'none'},
-    content: { width: '100%'}
+    menuUl: { listStyle: 'none'}
 }
 const Routes = (
     <Router>

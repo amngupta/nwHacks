@@ -1,7 +1,6 @@
 import React from 'react'
 import {Chart, LineChart} from 'react-d3-basic'
 
-
 let chartData = [
   {
     name: "Lavon Hilll I",
@@ -71,27 +70,28 @@ export default class Dashboard extends React.Component {
     const {children} = this.props;
     return (
       <div>
-      <div className="home">
-         <h1>Welcome to Kimchi Subscription Manager</h1>
-      </div>
-      {/*<Chart
-      title={title}
-      width={width}
-      height={height}
-      margins= {margins}
-      />*/}
-      <div className="chart" style={styles.chart}>
-      <LineChart
-        margins={margins}
+        <div className="home">
+          <h1>Welcome to Kimchi Subscription Manager</h1>
+        </div>
+        {/*<Chart
         title={title}
-        data={chartData}
         width={width}
         height={height}
-        chartSeries={chartSeries}
-        x={x}
-      />
+        margins= {margins}
+        />*/}
+        <div className="chart" style={styles.chart}>
+        <LineChart
+          margins={margins}
+          title={title}
+          data={chartData}
+          width={width}
+          height={height}
+          chartSeries={chartSeries}
+          x={x}
+        />
+        </div>
       </div>
-      </div>
+
     );
   }
 }
