@@ -1,14 +1,9 @@
 import React from 'react'
-import { Col, Grid, Row, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import UserItem from './UserItem'
 
 var users = [{uuid:1, name:"seleena", email:"kdsfs", tier:"teir", cost:33, start:2017, end:2019},
 			{uuid:2, name:"sam", email:"kdsfs", tier:"teir", cost:33, start:2017, end:2019} ]
-
-var styles = {header: {fontWeight: 'bold'}, 
-							element: {fontWeight: 'normal'}
-			 			 }
-
 
 
 function UserList() {
