@@ -17,13 +17,15 @@ Pain to manage subscriptions for small businesses
 ## Scope
 
 Company
-- [ ] Show a list of subscribers
-- [ ] Manage their subscriptions
-- [ ] Analyze their subscribers with dashboard and reports
+- [ ] Show a list of subscription types (Basic, Pro, Super)
+- [ ] Click on each subscription item will navigate to subscription detail (subscription title, total users)
+- [ ] Show a list of users subscribed to the plan
+- [ ] Can copy and paste embedded button to show a list of subscription plans
 
 User
-- [ ] Sign up with username and email
-- [ ] Subscribe to a subscriber
+- [ ] Sign up with email
+- [ ] Can subscribe to a subscriber
+- [ ] Can purchase a subscription
 
 ## Folder Structure
 
