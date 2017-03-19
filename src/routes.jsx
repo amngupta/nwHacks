@@ -15,16 +15,16 @@ const styles = {
 }
 const Routes = (
     <Router>
-    <div>
-    <AuthButton/>      
+      <div>
+        <AuthButton/>
         <div style={styles.content}>
-            <Route exact path="/" component={Home} />
-            <Route path="/dashboard" component={Dashboard} />
-            <Route path="/login" component={Login}/>
-            <EnsureLoggedInContainer path="/plans" component={CompanySubscriptionList} />
-            <EnsureLoggedInContainer path="/subscribers" component={UserList} />
+          <Route exact path="/" component={Home} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/login" component={Login}/>
+          <EnsureLoggedInContainer path="/plans" component={CompanySubscriptionList} />
+          <EnsureLoggedInContainer path="/subscribers" component={UserList} />
         </div>
-    </div>
+      </div>
     </Router>
 );
 
