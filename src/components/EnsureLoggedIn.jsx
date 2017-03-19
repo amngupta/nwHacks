@@ -5,6 +5,7 @@ import {
     Link, browserHistory, withRouter
 } from 'react-router-dom';
 import { Row, Modal, Button, Col, FormControl, FormGroup } from 'react-bootstrap';
+import {Chart} from 'react-d3-basic'
 
 const fakeAuth = {
   isAuthenticated: false,
