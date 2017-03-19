@@ -13,14 +13,14 @@ class SubscriptionForm extends React.Component {
     e.preventDefault()
     let self = this;
     // get values from the form
-    let subscription  = {
-      tier : this.tier.value,
-      features : this.features.value,
-      cost: this.cost.value,
-      usersNum: 0
-    }
+    // let subscription  = {
+    //   name : this.name.value,
+    //   features : this.features.value,
+    //   cost: this.cost.value,
+    //   usersNum: 0
+    // }
 
-    fetch('http://kimchifriedrice.mybluemix.net//subscriptionType/create',
+    fetch('http://kimchifriedrice.mybluemix.net/subscriptionType/create',
             {   method: 'POST',
                 mode: 'no-cors',
                 headers: new Headers(
@@ -28,19 +28,19 @@ class SubscriptionForm extends React.Component {
                     "Accept":"application/json"}
                 ),
                  body: JSON.stringify({
-                  name: "basic bi",
-                  cost: 20,
+                  name: this.name.value,
+                  cost: this.cost.value,
                   businessId: 101,
-                  billingType: 'months'
+                  billingType: this.billingType.value
                 })
              }
            )
       .then(function (response) {
         console.log(response);
-          if (subscription.tier.length > 0) {
-            self.props.addSubscription(subscription)
-            self.refs.subscriptionForm.reset()
-          }
+          // if (subscription.name.length > 0) {
+          //   self.props.addSubscription(subscription)
+          //   self.refs.subscriptionForm.reset()
+          // }
       return 
     })
     .catch(err=>{
@@ -59,14 +59,22 @@ class SubscriptionForm extends React.Component {
             <FormControl
               type="text"
               placeholder="basic"
-              inputRef={ref => {this.tier = ref}}
+              inputRef={ref => {this.name = ref}}
             />
-            <ControlLabel>Features</ControlLabel>
-            <FormControl
-              type="text"
+            <ControlLabel>Billing Type</ControlLabel>
+            <FormControl componentClass="select" placeholder="select" inputRef={ref=> {this.billingType = ref}}>
+                <option value="weeks">weekly</option>
+                <option value="months">monthly</option>
+                <option value="years">yearly</option>
+            </FormControl>
+
+
+            {/*<FormControl
+            }  type="text"
               placeholder="awesome features"
               inputRef={ref => {this.features = ref}}
-            />
+            />*/}
+
             <ControlLabel>Cost</ControlLabel>
             <FormControl
               type="text"

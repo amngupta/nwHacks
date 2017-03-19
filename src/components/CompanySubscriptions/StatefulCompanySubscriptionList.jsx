@@ -8,28 +8,7 @@ class StatefulCompanySubscriptionList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      subscriptions :[{
-        id: 1,
-        name: 'Hootsuite Professional Plan',
-        tier: 'Professional',
-        usersNum: 20,
-        features: 'Message scheduling Real-time analytics',
-        cost: '9.99'
-      },{
-        id: 2,
-        name: 'Hootsuite Basic Plan',
-        tier: 'Basic',
-        usersNum: 20,
-        features: 'Custom analytics reports',
-        cost: '9.99'
-      }, {
-        id: 3,
-        name: 'Hootsuite Ultimate Plan',
-        tier: 'Very Professional',
-        usersNum: 3,
-        features: 'Real-time analytics in your smartwatch',
-        cost: '29.99'
-      }]
+      subscriptions :[]
     }
     this.addSubscription = this.addSubscription.bind(this)
   }
@@ -45,11 +24,12 @@ class StatefulCompanySubscriptionList extends React.Component {
     };
     rp(options)
       .then(function (response) {
-        let subs = self.state.subscriptions;
-        subs.concat(response);
+       
+        //subs.concat(response);
         console.log(response);
-       self.setState({subscriptions : subs});
-      return 
+        let subs= this.state.subscriptions.concat(response)
+       this.setState({subscriptions : subs});
+      return subs
     })
     .catch(err=>{
       console.log(err);

@@ -12,7 +12,7 @@ export default class CompanySubscriptionList extends Component{
       <div style={styles.subscriptionList}>
         {
           this.props.subscriptions.map(function(item, index) {
-            return  <Subscription key={item.tier + index} subscription={item} />
+            return  <Subscription key={item.name + index} subscription={item} />
           })
         }
       </div>

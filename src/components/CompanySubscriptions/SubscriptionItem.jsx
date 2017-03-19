@@ -10,6 +10,7 @@ const styles = {
   summary: { wordWrap: 'break-word'}
 }
 
+
 const SubscriptionItem = (props) => {
   const {subscription} = props
 
@@ -18,10 +19,10 @@ const SubscriptionItem = (props) => {
       <div style={styles.row}>
         <div style={styles.titleRow}>
           <div style={styles.title}>
-            {subscription.tier}
+            {subscription.name}
           </div>
           <div style={styles.summary}>
-            {subscription.features}
+            { (subscription.features) != null ? subscription.features : null}
           </div>
         </div>
         <div style={styles.user}>
