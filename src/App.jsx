@@ -10,6 +10,7 @@ export default class AppContainer extends Component {
       <Grid fluid={true}>
         <Row>
           <div className="App">
+            Welcome to Kimichi Fried Rice
             <Col xs={12}>
               <ModalTest />
             </Col>
