@@ -12,7 +12,6 @@ export class ModalOpen extends Component {
           }   
         this.close = this.close.bind(this);
         this.open = this.open.bind(this);
-        this.state = { showModal: true };
         this.modalFooterImp = this.modalFooterImp.bind(this);
     }
 

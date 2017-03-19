@@ -87,10 +87,13 @@ export class Login extends Component {
         </FormGroup>
       </form>
     )
+  const signUpButton = (
+      <Button bsStyle="primary">Sign Up</Button>
+    )
 
-    const footer = (<div>
+   const footer = (<div>
           <Button onClick={this.login} bsStyle="success">Log in</Button>
-          <Button onClick={this.signup} bsStyle="primary">Sign Up</Button>
+          <ModalOpen eventListener={signUpButton}  />
         </div>)
     if (redirectToReferrer) {
       return (
@@ -100,7 +103,6 @@ export class Login extends Component {
     
     return (
       <ModalOpen modalBody={loginForm} modalFooter={footer} />
-
     )
   }
 }
