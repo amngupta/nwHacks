@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Col, Grid, Row } from 'react-bootstrap';
+import Dashboard from './Dashboard'
 
 export default class AppContainer extends Component {
 
