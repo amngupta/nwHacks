@@ -2,21 +2,19 @@ import React, { Component } from 'react';
 import './App.css';
 import { Col, Grid, Row } from 'react-bootstrap';
 
+
+var styles = {picture:
+               {width:'100%'}
+               }
+
 export default class AppContainer extends Component {
 
   render() {
     const {children} = this.props;
     return (
-      <Grid fluid={true}>
-        <Row>
-          <div className="App">
-            <h1>Welcome to Kimichi Fried Rice</h1>
-            <Col xs={12}>
-             {children}
-            </Col>
-          </div>
-        </Row>
-      </Grid>
+      <div className="App">
+         <h1 className="title">Welcome to Kimchi Subscription Manager</h1>
+      </div>
     );
   }
 }

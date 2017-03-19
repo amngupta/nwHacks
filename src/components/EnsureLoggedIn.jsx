@@ -7,6 +7,7 @@ import {
 import {ModalOpen} from './Modal'
 import { Row, Modal, Button, Col, FormControl, FormGroup } from 'react-bootstrap';
 
+
 export const fakeAuth = {
   isAuthenticated: false,
   authenticate(cb) {
@@ -40,13 +41,19 @@ export const EnsureLoggedInContainer = ({ component, ...rest }) =>{
 
 export const AuthButton = withRouter(({ history }) => (
   fakeAuth.isAuthenticated ? (
+    <div>
+    <li><Link to="/">Home</Link></li>
+    <li><Link to="/plans">Plans</Link></li>
+    <li><Link to="/subscribers">Subscribers</Link></li>
     <li>
       Welcome! <a onClick={() => {
         fakeAuth.signout(() => history.push('/'))
       }}>Sign out</a>
+    
     </li>
+    </div>
   ) : (
-     <li><Link to="/login">Login</Link></li>
+     <Link className="login" to="/login">Login</Link>
   )
   ))
 
