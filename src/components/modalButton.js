@@ -36,7 +36,6 @@ class ModalTest extends Component {
     }
 
 
-
     goNext() {
         this.setState({
             page: true
@@ -145,7 +144,7 @@ class ModalTest extends Component {
             modalBody = userInfoForm;
             buttonName = (<Button onClick={this.goNext}>Next</Button>)
         }
-        const {cName, sName} = this.props;
+        const {bName, cName, sName} = this.props;
         return (
             <div>
                 <Button
@@ -153,7 +152,7 @@ class ModalTest extends Component {
                     bsSize="large"
                     onClick={this.open}
                 >
-                    Launch demo modal
+                    {bName}
                 </Button>
 
                 <Modal show={this.state.showModal} onHide={this.close}>
@@ -175,10 +174,11 @@ class ModalTest extends Component {
 ModalTest.propTypes = {
     cName : React.PropTypes.string,
     sName : React.PropTypes.string,
+    bName : React.PropTypes.string
 }
 
-export const runKimchi = (domElement, companyName, subscriptionName)=>{
-    ReactDOM.render(<ModalTest cName={companyName} sName={subscriptionName} />, 
+export const runKimchi = (buttonName, domElement, companyName, subscriptionName)=>{
+    ReactDOM.render(<ModalTest bName={buttonName} cName={companyName} sName={subscriptionName} />, 
     document.getElementById(domElement)
     );
 }

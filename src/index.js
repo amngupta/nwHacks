@@ -5,7 +5,8 @@ import Routes from './routes';
 import './index.css';
 import { runKimchi } from './components/modalButton'
 
-runKimchi("test","hello","world");
+
+runKimchi("Subscribe", "test","hello","world");
 
 ReactDOM.render(
   Routes,
