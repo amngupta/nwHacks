@@ -26,7 +26,7 @@ const SubscriptionItem = (props) => {
           </div>
         </div>
         <div style={styles.user}>
-          <div>{`${subscription.usersNum} users`}</div>
+          <div>{`${subscription.usersNum ? subscription.usersNum : 0} users`}</div>
           <div>${subscription.cost}</div>
         </div>
       </div>

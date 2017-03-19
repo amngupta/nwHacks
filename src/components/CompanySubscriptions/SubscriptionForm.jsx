@@ -13,33 +13,25 @@ class SubscriptionForm extends React.Component {
     e.preventDefault()
     let self = this;
     // get values from the form
-    // let subscription  = {
-    //   name : this.name.value,
-    //   features : this.features.value,
-    //   cost: this.cost.value,
-    //   usersNum: 0
-    // }
+    let subscription ={
+      name: this.name.value,
+      cost: this.cost.value,
+      businessId: 101,
+      billingType: this.billingType.value
+    }
 
     fetch('http://kimchifriedrice.mybluemix.net/subscriptionType/create',
             {   method: 'POST',
                 mode: 'no-cors',
-                headers: new Headers(
-                   {"Content-Type": "application/json",
-                    "Accept":"application/json"}
-                ),
-                 body: JSON.stringify({
-                  name: this.name.value,
-                  cost: this.cost.value,
-                  businessId: 101,
-                  billingType: this.billingType.value
-                })
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                },
+                 body: JSON.stringify(subscription)
              }
            )
       .then(function (response) {
         console.log(response);
-          // if (subscription.name.length > 0) {
-          //   self.props.addSubscription(subscription)
-          //   self.refs.subscriptionForm.reset()
           // }
       return 
     })

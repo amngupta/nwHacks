@@ -2,6 +2,7 @@ import React from 'react'
 import CompanySubscriptionList from './CompanySubscriptionList'
 import SubscriptionForm from './SubscriptionForm'
 var rp = require('request-promise');
+import { Col } from 'react-bootstrap';
 
 class StatefulCompanySubscriptionList extends React.Component {
 
@@ -27,8 +28,8 @@ class StatefulCompanySubscriptionList extends React.Component {
        
         //subs.concat(response);
         console.log(response);
-        let subs= this.state.subscriptions.concat(response)
-       this.setState({subscriptions : subs});
+        let subs= self.state.subscriptions.concat(response)
+        self.setState({subscriptions : subs});
       return subs
     })
     .catch(err=>{
@@ -44,9 +45,12 @@ class StatefulCompanySubscriptionList extends React.Component {
   render() {
     return (
       <div>
-        <CompanySubscriptionList subscriptions={this.state.subscriptions} />
-        <hr />
+      <Col md={6}>
+          <CompanySubscriptionList subscriptions={this.state.subscriptions} />
+        </Col>
+        <Col md={6}>
         <SubscriptionForm addSubscription={this.addSubscription}/>
+      </Col>
       </div>
     )
   }
