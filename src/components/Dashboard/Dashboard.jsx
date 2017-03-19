@@ -1,5 +1,5 @@
 import React from 'react'
-import {Chart, LineChart} from 'react-d3-basic'
+//import {Chart, LineChart} from 'react-d3-basic'
 
 let chartData = [
   {
@@ -68,6 +68,7 @@ export default class Dashboard extends React.Component {
 
   render() {
     const {children} = this.props;
+    return null;
     return (
       <div>
         <div className="home">
@@ -80,15 +81,7 @@ export default class Dashboard extends React.Component {
         margins= {margins}
         />*/}
         <div className="chart" style={styles.chart}>
-        <LineChart
-          margins={margins}
-          title={title}
-          data={chartData}
-          width={width}
-          height={height}
-          chartSeries={chartSeries}
-          x={x}
-        />
+       
         </div>
       </div>
 

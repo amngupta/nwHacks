@@ -1,14 +1,36 @@
-import React from 'react'
+import React , {Component} from 'react';
 import { Table } from 'react-bootstrap';
-import UserItem from './UserItem'
-
-var users = [{uuid:1, name:"seleena", email:"kdsfs", tier:"teir", cost:33, start:2017, end:2019},
-			{uuid:2, name:"sam", email:"kdsfs", tier:"teir", cost:33, start:2017, end:2019},
-			{uuid:3, name:"ham", email:"ggggg", tier:"blue", cost:333, start:2012, end:2020} ]
+import UserItem from './UserItem';
+var rp = require('request-promise');
 
 
-function UserList() {
-	const TableInstance = (
+export default class UserList extends Component{
+
+state = {
+	users: []
+}
+componentWillMount(){
+
+var options = {
+    uri: 'http://kimchifriedrice.mybluemix.net/company/101',
+    headers: {
+        'User-Agent': 'Request-Promise'
+    },
+    json: true // Automatically parses the JSON string in the response
+};
+
+rp(options)
+    .then(function (response) {
+	this.setState({users : response});
+	return 
+  })
+  .catch(err=>{
+	  console.log(err);
+  })
+}
+
+render()
+{	const TableInstance = (
 		<Table responsive striped bordered condensed hover>
 			<thead>
 				<tr>
@@ -21,17 +43,16 @@ function UserList() {
 				</tr>
 			</thead>
 			<tbody>
-				{users.map (function(user,i) {
+				{this.state.users.map (function(user,i) {
 					return ( 
-						<UserItem key={user.uuid} name={user.name} email={user.email} tier={user.tier}
-						cost={user.cost} start={user.start} end={user.end} />
+						<UserItem key={user.uuid} name={user.first_name} email={user.email} tier={user.billing_type}
+						cost={user.cost} start={user.start_date} end={user.end_date} />
 					)
 				})}
 			</tbody>
 		</Table>
 	);
 
-	return (TableInstance)
-}
+	return (TableInstance)}
 
-export default UserList
+}
