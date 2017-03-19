@@ -1,0 +1,2 @@
+import CompanySubscriptionList from './CompanySubscriptionList'
+export default CompanySubscriptionList
