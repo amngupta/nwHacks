@@ -5,7 +5,7 @@ import Routes from './routes';
 import './index.css';
 import { foo } from './components/modalButton'
 
-foo("test");
+foo("test","hello","world");
 ReactDOM.render(
   Routes,
   document.getElementById('root')

@@ -141,7 +141,7 @@ class ModalTest extends Component {
             modalBody = userInfoForm;
             buttonName = (<Button onClick={this.goNext}>Next</Button>)
         }
-
+        const {cName, sName} = this.props;
         return (
             <div>
                 <Button
@@ -153,9 +153,11 @@ class ModalTest extends Component {
                 </Button>
 
                 <Modal show={this.state.showModal} onHide={this.close}>
-                    <Modal.Header closeButton />
+                    <Modal.Header closeButton >
+                        <Modal.Title>{cName} {sName}</Modal.Title>
+                    </Modal.Header>
                     <Modal.Body>
-                        {modalBody}
+                        {modalBody} 
                     </Modal.Body>
                     <Modal.Footer>
                         {buttonName}
@@ -166,8 +168,13 @@ class ModalTest extends Component {
     }
 }
 
-export const foo = (domElement)=>{
-    ReactDOM.render(<ModalTest />, 
+ModalTest.propTypes = {
+    cName : React.PropTypes.string,
+    sName : React.PropTypes.string,
+}
+
+export const foo = (domElement, companyName, subscriptionName)=>{
+    ReactDOM.render(<ModalTest cName={companyName} sName={subscriptionName} />, 
     document.getElementById(domElement)
     );
 }
