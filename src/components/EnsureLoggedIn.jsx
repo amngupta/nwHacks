@@ -4,8 +4,9 @@ import {
     Route, Redirect,
     Link, browserHistory, withRouter
 } from 'react-router-dom';
-import { Row, Button, Col, FormControl, FormGroup } from 'react-bootstrap';
 import {ModalOpen} from './Modal'
+import { Row, Modal, Button, Col, FormControl, FormGroup } from 'react-bootstrap';
+import {Chart} from 'react-d3-basic'
 
 export const fakeAuth = {
   isAuthenticated: false,
