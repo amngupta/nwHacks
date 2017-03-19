@@ -6,17 +6,19 @@ import {
 } from 'react-router-dom';
 import {ModalOpen} from './Modal'
 import { Row, Modal, Button, Col, FormControl, FormGroup, Nav, NavItem } from 'react-bootstrap';
+var rp = require('request-promise');
 
 
 export const fakeAuth = {
   isAuthenticated: false,
-  authenticate(cb) {
-    this.isAuthenticated = true
-    setTimeout(cb, 100) // fake async
+
+  setSignIn(t){
+    console.log(t, "here");
+    this.isAuthenticated = t ;
   },
-  signout(cb) {
-    this.isAuthenticated = false
-    setTimeout(cb, 100)
+  setSignOut(cb){
+    this.isAuthenticated = false;
+    cb();
   },
   isAuthenticatedFunc(){
     return this.isAuthenticated;
@@ -49,7 +51,7 @@ export const AuthButton = withRouter(({ history }) => (
       <NavItem><Link to="/subscribers">Subscribers</Link></NavItem>
       <NavItem>
         <a onClick={() => {
-          fakeAuth.signout(() => history.push('/'))
+          fakeAuth.setSignOut(() => history.push('/'))
         }}>Sign out</a>
       </NavItem>
       </Nav>
@@ -65,30 +67,55 @@ export class Login extends Component {
     redirectToReferrer: false
   }
 
-  login = () => {
-    fakeAuth.authenticate(() => {
-      this.setState({ redirectToReferrer: true })
-    })
+  constructor(props){
+    super(props);
+    this.authenticate = this.authenticate.bind(this);
+    this.state = {
+    redirectToReferrer: false
+  }
   }
 
-  signup = () => {
-    fakeAuth.authenticate(() => {
-      this.setState({ redirectToReferrer: true })
-    })
+authenticate() {
+    let self = this;
+    let username =  encodeURIComponent(this.username.value);
+    let password =  this.password.value;
+    console.log(username, password)
+    fetch('http://kimchifriedrice.mybluemix.net/login/'+username+'/'+password, 
+            {   method: 'GET',
+             })
+      .then(re => re.json())
+      .then(obj => {
+        if(obj.length > 0){
+          fakeAuth.setSignIn(true);
+          self.setState({ redirectToReferrer: true })
+        }
+      })
+      .catch(err => console.log(err))
+  }
+
+  signout(cb) {
+    console.log("here");
+    fakeAuth.setSignIn(false);
   }
 
   register = () => {
     let companyInfo = {
-      name: this.name.value,
-      loginID: this.loginID.value,
-      password: this.password.value
+      "name": this.name.value,
+      "email": this.loginID.value,
+      "password": this.password.value
     }
-    console.log(companyInfo)
-    this.login()
-  }
-
-  cancel = () => {
-    // close the registration window
+    var data = new FormData();
+    data.append( "json", JSON.stringify( companyInfo ) );
+    let self = this;
+    fetch('http://kimchifriedrice.mybluemix.net/company/create', {
+    method: 'POST',
+    body: JSON.stringify(companyInfo)
+    }).then(res=>res.json())
+    .then(obj=>{
+               fakeAuth.setSignIn(true);
+          self.setState({ redirectToReferrer: true })
+    })
+    .catch(er=>console.log(er))
   }
 
   render() {
@@ -101,10 +128,12 @@ export class Login extends Component {
           <FormControl
             type="text"
             placeholder="Login Name"
+            inputRef={ref => {this.username = ref}}
           />
           <FormControl
             type="password"
             placeholder="password"
+            inputRef={ref => {this.password = ref}}
           />
         </FormGroup>
       </form>
@@ -126,7 +155,7 @@ export class Login extends Component {
           <FormControl
             type="password"
             placeholder="Type a password..."
-            inputRef={ref => this.password = ref}
+            inputRef={ref => this.t = ref}
           />
         </FormGroup>
       </form>
@@ -141,7 +170,7 @@ export class Login extends Component {
         <Button onClick={this.cancel} bsStyle="danger">Cancel</Button></div>)
 
     const footer = (<div>
-          <Button onClick={this.login} bsStyle="success">Log in</Button>
+          <Button onClick={this.authenticate} bsStyle="success">Log in</Button>
           <ModalOpen eventListener={signUpButton} modalBody={signupForm} modalFooter={footer2}/>
           </div>)
     

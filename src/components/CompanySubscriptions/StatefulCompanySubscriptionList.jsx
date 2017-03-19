@@ -25,7 +25,6 @@ class StatefulCompanySubscriptionList extends React.Component {
     };
     rp(options)
       .then(function (response) {
-       
         //subs.concat(response);
         console.log(response);
         let subs= self.state.subscriptions.concat(response)
