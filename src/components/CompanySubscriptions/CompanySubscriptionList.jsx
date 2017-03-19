@@ -8,7 +8,6 @@ const styles = {
 const CompanySubscriptionList = (props) => {
 
   const {subscriptions} = props;
-  console.log(subscriptions)
 
    return (
      <div style={styles.subscriptionList}>
