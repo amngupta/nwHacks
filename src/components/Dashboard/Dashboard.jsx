@@ -1,6 +1,7 @@
 import React from 'react'
 import {Chart, LineChart} from 'react-d3-basic'
 
+
 let chartData = [
   {
     name: "Lavon Hilll I",
@@ -60,6 +61,9 @@ let width = 700,
       return d.index;
     }
 
+const styles = {
+  chart: { marginLeft: '300px'}
+}
 
 export default class Dashboard extends React.Component {
 
@@ -76,8 +80,9 @@ export default class Dashboard extends React.Component {
       height={height}
       margins= {margins}
       />*/}
+      <div className="chart" style={styles.chart}>
       <LineChart
-        margins= {margins}
+        margins={margins}
         title={title}
         data={chartData}
         width={width}
@@ -85,6 +90,7 @@ export default class Dashboard extends React.Component {
         chartSeries={chartSeries}
         x={x}
       />
+      </div>
       </div>
     );
   }

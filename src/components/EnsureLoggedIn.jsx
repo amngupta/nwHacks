@@ -43,7 +43,7 @@ export const AuthButton = withRouter(({ history }) => (
   fakeAuth.isAuthenticated ? (
     <div>
     <ul>
-    <li><Link to="/">Home</Link></li>
+    <li><Link to="/dashboard">Dashboard</Link></li>
     <li><Link to="/plans">Plans</Link></li>
     <li><Link to="/subscribers">Subscribers</Link></li>
     <li>

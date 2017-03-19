@@ -21,6 +21,13 @@ class StatefulCompanySubscriptionList extends React.Component {
         usersNum: 20,
         features: 'Custom analytics reports',
         cost: '9.99'
+      }, {
+        id: 3,
+        name: 'Hootsuite Ultimate Plan',
+        tier: 'Very Professional',
+        usersNum: 3,
+        features: 'Real-time analytics in your smartwatch',
+        cost: '29.99'
       }]
     }
     this.addSubscription = this.addSubscription.bind(this)

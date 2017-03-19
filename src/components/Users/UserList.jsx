@@ -3,7 +3,8 @@ import { Table } from 'react-bootstrap';
 import UserItem from './UserItem'
 
 var users = [{uuid:1, name:"seleena", email:"kdsfs", tier:"teir", cost:33, start:2017, end:2019},
-			{uuid:2, name:"sam", email:"kdsfs", tier:"teir", cost:33, start:2017, end:2019} ]
+			{uuid:2, name:"sam", email:"kdsfs", tier:"teir", cost:33, start:2017, end:2019},
+			{uuid:3, name:"ham", email:"ggggg", tier:"blue", cost:333, start:2012, end:2020} ]
 
 
 function UserList() {
