@@ -11,10 +11,17 @@ const styles = {
   summary: { wordWrap: 'break-word'}
 }
 
-
 export default class SubscriptionItem extends Component {
   constructor(props){
     super(props);
+    this.commandString = this.commandString.bind(this);
+  }
+
+  commandString(buttonName, domElement, business_id, id) {
+    let result = `<script type="text/javascript">
+                  runKimchi(${buttonName}, ${domElement}, ${business_id}, ${id});
+                  </script>`;
+    return result;
   }
 render(){
       const {subscription} = this.props;
@@ -35,18 +42,11 @@ render(){
         </div>
       </div>
     </div>)
-    const embeddedSubscription = JSON.stringify(subscription)
+    const embeddedSubscription = this.commandString('"Subscribe"', `<div id="placeholder"></div>` , subscription.business_id, subscription.id)
 
   return (
     <ModalOpen eventListener={handler} modalBody={embeddedSubscription} />
   )
 }
 
-}
-
-//
-{/*<script src="...."> </script>
-<button>Subscribe</button>
-- needs to carry information about the business ID, the subscription ID
-- and if the user copy and paste the code into their webpage then they can use
-- our scripts with the button*/}
+}  

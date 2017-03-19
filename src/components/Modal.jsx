@@ -58,8 +58,7 @@ export class ModalOpen extends Component {
 
 
 ModalOpen.propTypes = {
-    eventListener: React.PropTypes.string,
-    modalBody: React.PropTypes.object,
+    eventListener: React.PropTypes.object,
     modalFooter: React.PropTypes.node,
     modalHeader: React.PropTypes.string,
 };
