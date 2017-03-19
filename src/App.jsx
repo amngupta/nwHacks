@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Col, Grid, Row } from 'react-bootstrap';
-import { ModalTest } from './components/Modal';
 
 export default class AppContainer extends Component {
 
@@ -11,7 +10,6 @@ export default class AppContainer extends Component {
         <Row>
           <div className="App">
             <Col xs={12}>
-              <ModalTest />
             </Col>
           </div>
         </Row>

@@ -5,7 +5,7 @@ import {
     Link, NavLink
 } from 'react-router-dom'
 import AppContainer from './App';
-import BoardContainer from './Dashboard'
+// import BoardContainer from './Dashboard'
 // import Courses from './components/Courses';
 // import Rooms from './components/Rooms';
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
@@ -36,7 +36,6 @@ const Routes = (
                 </Navbar.Collapse>
             </Navbar>
             <Route exact path="/" component={AppContainer} />
-            <Route exact path="/dashboard" component={BoardContainer} />
         </div>
     </Router>
 );
