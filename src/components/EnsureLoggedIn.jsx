@@ -4,9 +4,10 @@ import {
     Route, Redirect,
     Link, browserHistory, withRouter
 } from 'react-router-dom';
-import { Row, Modal, Button, Col, FormControl, FormGroup } from 'react-bootstrap';
+import { Row, Button, Col, FormControl, FormGroup } from 'react-bootstrap';
+import {ModalOpen} from './Modal'
 
-const fakeAuth = {
+export const fakeAuth = {
   isAuthenticated: false,
   authenticate(cb) {
     this.isAuthenticated = true
@@ -15,6 +16,9 @@ const fakeAuth = {
   signout(cb) {
     this.isAuthenticated = false
     setTimeout(cb, 100)
+  },
+  isAuthenticatedFunc(){
+    return this.isAuthenticated;
   }
 }
 
@@ -36,15 +40,15 @@ export const EnsureLoggedInContainer = ({ component, ...rest }) =>{
 
 export const AuthButton = withRouter(({ history }) => (
   fakeAuth.isAuthenticated ? (
-    <p>
-      Welcome! <button onClick={() => {
+    <li>
+      Welcome! <a onClick={() => {
         fakeAuth.signout(() => history.push('/'))
-      }}>Sign out</button>
-    </p>
+      }}>Sign out</a>
+    </li>
   ) : (
-    <p>You are not logged in.</p>
+     <li><Link to="/login">Login</Link></li>
   )
-))
+  ))
 
 
 export class Login extends Component {
@@ -83,6 +87,10 @@ export class Login extends Component {
       </form>
     )
 
+    const footer = (<div>
+          <Button onClick={this.login} bsStyle="success">Log in</Button>
+          <Button onClick={this.signup} bsStyle="primary">Sign Up</Button>
+        </div>)
     if (redirectToReferrer) {
       return (
         <Redirect to={from}/>
@@ -90,14 +98,8 @@ export class Login extends Component {
     }
     
     return (
-      <div>
-        <p>You must log in to view the page at {from.pathname}</p>
+      <ModalOpen modalBody={loginForm} modalFooter={footer} />
 
-        {loginForm}
-
-        <Button onClick={this.login} bsStyle="success">Log in</Button>
-        <Button onClick={this.signup} bsStyle="primary">Sign Up</Button>
-      </div>
     )
   }
 }

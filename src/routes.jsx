@@ -22,7 +22,6 @@ const Routes = (
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/plans">Plans</Link></li>
                     <li><Link to="/subscribers">Subscribers</Link></li>
-                    <li><Link to="/login">Login</Link></li>
                     <li><AuthButton/></li>
                 </ul>
             </div>
