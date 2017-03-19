@@ -8,21 +8,22 @@ export default class UserList extends Component {
     users: [],
   }; // Automatically parses the JSON string in the response
   componentWillMount() {
-    var options = {
-      uri: 'http://kimchifriedrice.mybluemix.net/company/101',
-      headers: {
+	let self = this;
+var options = {
+    uri: 'http://kimchifriedrice.mybluemix.net/company/101',
+    headers: {
         'User-Agent': 'Request-Promise',
-      },
+    },
       json: true,
-    };
+};
 
-    rp(options)
-      .then(function(response) {
+rp(options)
+    .then(function (response) {
         console.log(response);
-        this.setState({ users: response });
-      })
-      .catch(err => {
-        console.log(err);
+		self.setState({users : response});
+  })
+  .catch(err=>{
+	  console.log(err);
       });
   }
 
