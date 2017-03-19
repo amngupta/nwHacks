@@ -37,7 +37,6 @@ render(){
           </div>
         </div>
         <div style={styles.user}>
-          <div>{`${subscription.usersNum ? subscription.usersNum : 0} usrs`}</div>
           <div>${subscription.cost}</div>
         </div>
       </div>
@@ -49,4 +48,4 @@ render(){
   )
 }
 
-}  
+}
