@@ -1,2 +1,2 @@
 import UserList from './UserList'
-export default Users
+export default UserList
