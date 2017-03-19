@@ -4,12 +4,12 @@ import { Row, Modal, Button, Col, FormControl, FormGroup } from 'react-bootstrap
 export class ModalOpen extends Component {
     constructor(props) {
         super(props);
-        if(props.eventListener != null){
+        if(props.eventListener != null) {
             this.state = { showModal: false };
         }
-        else{
-                this.state = { showModal: true };
-          }   
+        else {
+            this.state = { showModal: true };
+        }   
         this.close = this.close.bind(this);
         this.open = this.open.bind(this);
         this.modalFooterImp = this.modalFooterImp.bind(this);

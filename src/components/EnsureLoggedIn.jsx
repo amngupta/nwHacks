@@ -69,8 +69,6 @@ export class Login extends Component {
   }
 
   register = () => {
-    // We are not directly collecting the password...?
-    // anyway, create an object containing the company's login name?
     let companyInfo = {
       name: this.name.value,
       loginID: this.loginID.value,
