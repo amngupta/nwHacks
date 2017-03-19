@@ -173,7 +173,7 @@ ModalTest.propTypes = {
     sName : React.PropTypes.string,
 }
 
-export const foo = (domElement, companyName, subscriptionName)=>{
+export const runKimchi = (domElement, companyName, subscriptionName)=>{
     ReactDOM.render(<ModalTest cName={companyName} sName={subscriptionName} />, 
     document.getElementById(domElement)
     );
