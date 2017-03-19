@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Row, Modal, Button, Col, FormControl, FormGroup } from 'react-bootstrap';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
-
 import CardReactFormContainer from 'card-react';
+
+
 import './card.css';
 
 export class ModalTest extends Component {
@@ -11,7 +12,18 @@ export class ModalTest extends Component {
         this.close = this.close.bind(this);
         this.goNext = this.goNext.bind(this);
         this.open = this.open.bind(this);
+        this.submit = this.submit.bind(this);
         this.state = { showModal: false, country: '', region: '', page: false };
+    }
+
+    submit() {        
+        let userData = {
+            name: this.name.value,
+            cvc: this.cvc.value,
+            number: this.number.value,
+            expiry: this.expiry.value
+        }
+        {/* Use API to submit the UserData*/}
     }
 
     selectCountry(val) {
@@ -53,10 +65,10 @@ export class ModalTest extends Component {
                 >
                 
                 <form>
-                    <FormControl placeholder="Full name" type="text" name="CCname" />
-                    <FormControl placeholder="Card number" type="text" name="CCnumber" />
-                    <FormControl placeholder="MM/YY" type="text" name="CCexpiry"/>
-                    <FormControl placeholder="CVC" type="text" name="CCcvc"/>
+                    <FormControl inputRef={ref => this.name = ref} placeholder="Full name" type="text" name="CCname" />
+                    <FormControl inputRef={ref => this.number = ref} placeholder="Card number" type="text" name="CCnumber" />
+                    <FormControl inputRef={ref => this.expiry = ref} placeholder="MM/YY" type="text" name="CCexpiry"/>
+                    <FormControl inputRef={ref => this.cvc = ref}  placeholder="CVC" type="text" name="CCcvc"/>
                 </form>
                 
                 </CardReactFormContainer>
@@ -74,8 +86,8 @@ export class ModalTest extends Component {
                         <Button bsStyle="success" bsSize="large" onClick={this.close}>Sign Up!</Button>
                     </Col>
                     <p>
-                        Powered by Kimchi Fried Rics
-                        </p>
+                        Powered by Kimchi Fried Rice
+                    </p>
                 </div>
             </div>
         );
@@ -101,7 +113,7 @@ export class ModalTest extends Component {
                     <FormControl
                         type="text"
                         placeholder="Address Line 2" />
-                    <br />
+                    <br />        
                     <div className="col-sm-6">
                         <div className="col-sm-12">
                             <CountryDropdown
@@ -124,7 +136,7 @@ export class ModalTest extends Component {
         let buttonName = null;
         if (this.state.page) {
             modalBody = creditCardForm;
-            buttonName = (<Button >Submit</Button>)
+            buttonName = (<Button onClick={this.submit}>Submit</Button>)
         }
         else {
             modalBody = userInfoForm;
