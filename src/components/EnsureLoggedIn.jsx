@@ -69,6 +69,16 @@ export class Login extends Component {
     })
   }
 
+  register = () => {
+    // We are not directly collecting the password...?
+    // anyway, create an object containing the company's login name?
+
+  }
+
+  cancel = () => {
+    // close the registration window
+  }
+
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } }
     const { redirectToReferrer } = this.state
@@ -87,20 +97,45 @@ export class Login extends Component {
         </FormGroup>
       </form>
     )
-  const signUpButton = (
+
+    const signupForm = (
+      <form>
+        <FormGroup>
+          <FormControl
+            type="text"
+            placeholder="Company Name"
+          />
+          <FormControl
+            type="text"
+            placeholder="Login ID"
+          />
+          <FormControl
+            type="password"
+            placeholder="Type a password..."
+          />
+        </FormGroup>
+      </form>
+    )
+
+    const signUpButton = (
       <Button bsStyle="primary">Sign Up</Button>
     )
 
-   const footer = (<div>
+    const footer2 = (<div>
+        <Button onClick={this.register} bsStyle="success">Register</Button>
+        <Button onClick={this.cancel} bsStyle="danger">Cancel</Button></div>)
+
+    const footer = (<div>
           <Button onClick={this.login} bsStyle="success">Log in</Button>
-          <ModalOpen eventListener={signUpButton}  />
-        </div>)
+          <ModalOpen eventListener={signUpButton} modalBody={signupForm} modalFooter={footer2}/>
+          </div>)
+    
     if (redirectToReferrer) {
       return (
         <Redirect to={from}/>
       )
     }
-    
+
     return (
       <ModalOpen modalBody={loginForm} modalFooter={footer} />
     )
@@ -108,5 +143,4 @@ export class Login extends Component {
 }
 
 
-{/*------------------------------------------*/}
 export default EnsureLoggedInContainer
