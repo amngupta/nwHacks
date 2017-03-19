@@ -42,6 +42,7 @@ export const EnsureLoggedInContainer = ({ component, ...rest }) =>{
 export const AuthButton = withRouter(({ history }) => (
   fakeAuth.isAuthenticated ? (
     <div>
+    <ul>
     <li><Link to="/">Home</Link></li>
     <li><Link to="/plans">Plans</Link></li>
     <li><Link to="/subscribers">Subscribers</Link></li>
@@ -49,8 +50,8 @@ export const AuthButton = withRouter(({ history }) => (
       Welcome! <a onClick={() => {
         fakeAuth.signout(() => history.push('/'))
       }}>Sign out</a>
-    
     </li>
+    </ul>
     </div>
   ) : (
      <Link className="login" to="/login">Login</Link>
