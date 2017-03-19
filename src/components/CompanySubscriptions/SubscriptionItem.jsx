@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {Component} from 'react'
+import {ModalOpen} from '../Modal'
 
 const styles = {
   table: { display: 'table', width: '100%', borderTop: '1px solid #e1e4e8', paddingLeft: 20},
@@ -11,11 +12,14 @@ const styles = {
 }
 
 
-const SubscriptionItem = (props) => {
-  const {subscription} = props
-
-  return (
-    <div style={styles.table}>
+export default class SubscriptionItem extends Component {
+  constructor(props){
+    super(props);
+  }
+render(){
+      const {subscription} = this.props;
+      const handler = (    
+      <div style={styles.table}>
       <div style={styles.row}>
         <div style={styles.titleRow}>
           <div style={styles.title}>
@@ -30,8 +34,20 @@ const SubscriptionItem = (props) => {
           <div>${subscription.cost}</div>
         </div>
       </div>
-    </div>
+    </div>)
+    const embeddedSubscription = JSON.stringify(subscription)
+
+  return (
+    <ModalOpen eventListener={handler} modalBody={embeddedSubscription} />
   )
 }
 
-export default SubscriptionItem
+}
+
+// 
+{/*<script src="...."> </script>
+<button>Subscribe</button>
+- needs to carry information about the business ID, the subscription ID
+- and if the user copy and paste the code into their webpage then they can use
+- our scripts with the button*/}
+
