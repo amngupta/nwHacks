@@ -18,7 +18,7 @@ export default class SubscriptionItem extends Component {
   }
 render(){
       const {subscription} = this.props;
-      const handler = (    
+      const handler = (
       <div style={styles.table}>
       <div style={styles.row}>
         <div style={styles.titleRow}>
@@ -30,7 +30,7 @@ render(){
           </div>
         </div>
         <div style={styles.user}>
-          <div>{`${subscription.usersNum ? subscription.usersNum : 0} users`}</div>
+          <div>{`${subscription.usersNum ? subscription.usersNum : 0} usrs`}</div>
           <div>${subscription.cost}</div>
         </div>
       </div>
@@ -44,10 +44,9 @@ render(){
 
 }
 
-// 
+//
 {/*<script src="...."> </script>
 <button>Subscribe</button>
 - needs to carry information about the business ID, the subscription ID
 - and if the user copy and paste the code into their webpage then they can use
 - our scripts with the button*/}
-

@@ -15,6 +15,10 @@ class StatefulCompanySubscriptionList extends React.Component {
   }
 
   componentWillMount(){
+    this.fetchSubscriptionList();
+  }
+
+  fetchSubscriptionList(){
     let self = this;
     var options = {
       uri: 'http://kimchifriedrice.mybluemix.net/subscriptions/101',
@@ -48,7 +52,7 @@ class StatefulCompanySubscriptionList extends React.Component {
           <CompanySubscriptionList subscriptions={this.state.subscriptions} />
         </Col>
         <Col md={6}>
-        <SubscriptionForm addSubscription={this.addSubscription}/>
+        <SubscriptionForm addSubscription={this.addSubscription} fetchSubscriptionList={()=>this.fetchSubscriptionList()}/>
       </Col>
       </div>
     )

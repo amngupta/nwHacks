@@ -4,13 +4,8 @@ var rp = require('request-promise');
 
 class SubscriptionForm extends React.Component {
 
-  constructor(props) {
-    super()
-    this.createSubscription = this.createSubscription.bind(this)
-  }
-
   createSubscription(e) {
-    e.preventDefault()
+    e.preventDefault();
     let self = this;
     // get values from the form
     let subscription ={
@@ -19,21 +14,15 @@ class SubscriptionForm extends React.Component {
       businessId: 101,
       billingType: this.billingType.value
     }
-
     fetch('http://kimchifriedrice.mybluemix.net/subscriptionType/create',
-            {   method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                  'Accept': 'application/json',
-                  'Content-Type': 'application/json',
-                },
-                 body: JSON.stringify(subscription)
-             }
-           )
-      .then(function (response) {
-        console.log(response);
-          // }
-      return 
+      {   method: 'POST',
+      body: JSON.stringify(subscription)
+      }
+    )
+    .then(res=>res.json())
+    .then(obj=>{
+        console.log(obj);
+        this.props.fetchSubscriptionList();
     })
     .catch(err=>{
       console.log(err);
@@ -45,7 +34,7 @@ class SubscriptionForm extends React.Component {
 
     return (
       <div>
-        <form ref='subscriptionForm' onSubmit={this.createSubscription}>
+        <form ref='subscriptionForm' onSubmit={(e)=>this.createSubscription(e)}>
           <FormGroup>
             <ControlLabel>Tier</ControlLabel>
             <FormControl

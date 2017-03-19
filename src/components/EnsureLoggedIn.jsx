@@ -80,7 +80,7 @@ authenticate() {
     let username =  encodeURIComponent(this.username.value);
     let password =  this.password.value;
     console.log(username, password)
-    fetch('http://kimchifriedrice.mybluemix.net/login/'+username+'/'+password, 
+    fetch('http://kimchifriedrice.mybluemix.net/login/'+username+'/'+password,
             {   method: 'GET',
              })
       .then(re => re.json())
@@ -108,8 +108,8 @@ authenticate() {
     data.append( "json", JSON.stringify( companyInfo ) );
     let self = this;
     fetch('http://kimchifriedrice.mybluemix.net/company/create', {
-    method: 'POST',
-    body: JSON.stringify(companyInfo)
+      method: 'POST',
+      body: JSON.stringify(companyInfo)
     }).then(res=>res.json())
     .then(obj=>{
                fakeAuth.setSignIn(true);
@@ -121,7 +121,7 @@ authenticate() {
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/dashboard' } }
     const { redirectToReferrer } = this.state
-    
+
     const loginForm = (
       <form>
         <FormGroup>
@@ -173,7 +173,7 @@ authenticate() {
           <Button onClick={this.authenticate} bsStyle="success">Log in</Button>
           <ModalOpen eventListener={signUpButton} modalBody={signupForm} modalFooter={footer2}/>
           </div>)
-    
+
     if (redirectToReferrer) {
       return (
         <Redirect to={from}/>
