@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import {ModalOpen} from './Modal'
 import { Row, Modal, Button, Col, FormControl, FormGroup } from 'react-bootstrap';
-// import {Chart} from 'react-d3-basic'
+
 
 export const fakeAuth = {
   isAuthenticated: false,
@@ -75,6 +75,22 @@ export class Login extends Component {
     })
   }
 
+  register = () => {
+    // We are not directly collecting the password...?
+    // anyway, create an object containing the company's login name?
+    let companyInfo = {
+      name: this.name.value,
+      loginID: this.loginID.value,
+      password: this.password.value
+    }
+    console.log(companyInfo)
+    this.login()
+  }
+
+  cancel = () => {
+    // close the registration window
+  }
+
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } }
     const { redirectToReferrer } = this.state
@@ -93,20 +109,48 @@ export class Login extends Component {
         </FormGroup>
       </form>
     )
-  const signUpButton = (
+
+    const signupForm = (
+      <form>
+        <FormGroup>
+          <FormControl
+            type="text"
+            placeholder="Company Name"
+            inputRef={ref => this.name = ref}
+          />
+          <FormControl
+            type="text"
+            placeholder="Login ID"
+            inputRef={ref => this.loginID = ref}
+          />
+          <FormControl
+            type="password"
+            placeholder="Type a password..."
+            inputRef={ref => this.password = ref}
+          />
+        </FormGroup>
+      </form>
+    )
+
+    const signUpButton = (
       <Button bsStyle="primary">Sign Up</Button>
     )
 
-   const footer = (<div>
+    const footer2 = (<div>
+        <Button onClick={this.register} bsStyle="success">Register</Button>
+        <Button onClick={this.cancel} bsStyle="danger">Cancel</Button></div>)
+
+    const footer = (<div>
           <Button onClick={this.login} bsStyle="success">Log in</Button>
-          <ModalOpen eventListener={signUpButton}  />
-        </div>)
+          <ModalOpen eventListener={signUpButton} modalBody={signupForm} modalFooter={footer2}/>
+          </div>)
+    
     if (redirectToReferrer) {
       return (
         <Redirect to={from}/>
       )
     }
-    
+
     return (
       <ModalOpen modalBody={loginForm} modalFooter={footer} />
     )
@@ -114,5 +158,4 @@ export class Login extends Component {
 }
 
 
-{/*------------------------------------------*/}
 export default EnsureLoggedInContainer

@@ -1,2 +1,2 @@
-import CompanySubscriptionList from './CompanySubscriptionList'
-export default CompanySubscriptionList
+import StatefulCompanySubscriptionList from './StatefulCompanySubscriptionList'
+export default StatefulCompanySubscriptionList
