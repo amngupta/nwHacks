@@ -11,15 +11,19 @@
   text-align: right;
   padding-right: 10px;
   margin-top: 10px;
-  color: white;
+  color: black;
   font-weight: bold;
 }
 
 .title{
-  color: white;
-  vertical-align: middle;
+  color: black;
+  position: absolute;
 }
 
+.home {
+  text-align: center;
+  
+}
 
 
 .App-logo {

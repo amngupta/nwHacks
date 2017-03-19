@@ -4,8 +4,8 @@ import {
     Route,
     Link
 } from 'react-router-dom'
-import AppContainer from './App';
-
+import Home from './Home';
+import Dashboard from "./components/Dashboard"
 import UserList from './components/Users'
 import CompanySubscriptionList from './components/CompanySubscriptions'
 import {EnsureLoggedInContainer, AuthButton, Login} from './components/EnsureLoggedIn'
@@ -19,7 +19,8 @@ const Routes = (
     <div>
     <AuthButton/>      
         <div style={styles.content}>
-            <Route exact path="/" component={AppContainer} / >
+            <Route exact path="/" component={Home} />
+            <Route path="/dashboard" component={Dashboard} />
             <Route path="/login" component={Login}/>
             <EnsureLoggedInContainer path="/plans" component={CompanySubscriptionList} />
             <EnsureLoggedInContainer path="/subscribers" component={UserList} />
