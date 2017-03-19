@@ -1,3 +1,4 @@
+import React from 'react'
 
 const subscriptionItem = {
   name: 'Professional',
@@ -7,3 +8,8 @@ const subscriptionItem = {
   cost: '$9.99'
 
 }
+const SubscriptionItem = (props) => {
+  return ( <div> I'm an item</div>)
+}
+
+export default SubscriptionItem

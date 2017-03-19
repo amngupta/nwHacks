@@ -21,13 +21,11 @@ function UserList() {
 	      <Col xs={2} md={2}>Start Date</Col>
 	      <Col xs={2} md={2}>End Date</Col>
 	    </Row>
-
 		{users.map( function(user,i){
 		  return( 
 		  	<UserItem key={user.uuid} name={user.name} email={user.email} tier={user.tier} cost={user.cost} start={user.start} end={user.end} />
 		  )
 		})}
-
 	 </Grid>
 
 	)
