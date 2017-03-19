@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom';
 import {ModalOpen} from './Modal'
 import { Row, Modal, Button, Col, FormControl, FormGroup } from 'react-bootstrap';
-import {Chart} from 'react-d3-basic'
 
 export const fakeAuth = {
   isAuthenticated: false,
