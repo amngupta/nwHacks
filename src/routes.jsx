@@ -1,14 +1,14 @@
-import React, {Components} from 'react';
+import React from 'react';
 import {
     BrowserRouter as Router,
     Route,
-    Link, NavLink
+    Link
 } from 'react-router-dom'
 import AppContainer from './App';
-import UserList from './components/Users'
-//import Subscriptions from './CompanySubscriptionList'
 
-import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import UserList from './components/Users'
+import CompanySubscriptionList from './components/CompanySubscriptions'
+
 const styles = {
     menu: { width: '20%', float: 'left'},
     menuUl: { listStyle: 'none'},
@@ -20,12 +20,13 @@ const Routes = (
             <div style={styles.menu}>
                 <ul style={styles.menuUl}>
                     <li><Link to="/">Home</Link></li>
+                    <li><Link to="/plans">Plans</Link></li>
                     <li><Link to="/subscribers">Subscribers</Link></li>
-                    <li><Link to="/topics">Subscription Plans</Link></li>
                 </ul>
             </div>
             <div style={styles.content}>
                 <Route exact path="/" component={AppContainer} />
+                <Route path="/plans" component={CompanySubscriptionList} />
                 <Route path="/subscribers" component={UserList} />
             </div>
         </div>
