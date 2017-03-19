@@ -2,8 +2,8 @@ import React from 'react'
 import { Col, Grid, Row } from 'react-bootstrap';
 import UserItem from './UserItem'
 
-var users = [{name:"seleena", email:"kdsfs", tier:"teir", cost:33, start:2017, end:2019},
-			{name:"sam", email:"kdsfs", tier:"teir", cost:33, start:2017, end:2019} ]
+var users = [{uuid:1, name:"seleena", email:"kdsfs", tier:"teir", cost:33, start:2017, end:2019},
+			{uuid:2, name:"sam", email:"kdsfs", tier:"teir", cost:33, start:2017, end:2019} ]
 
 var styles = {header: 
 				{fontWeight: 'bold'}
@@ -24,7 +24,7 @@ function UserList() {
 
 		{users.map( function(user,i){
 		  return( 
-		  	<UserItem name={user.name} email={user.email} tier={user.tier} cost={user.cost} start={user.start} end={user.end} /> 
+		  	<UserItem key={user.uuid} name={user.name} email={user.email} tier={user.tier} cost={user.cost} start={user.start} end={user.end} />
 		  )
 		})}
 
