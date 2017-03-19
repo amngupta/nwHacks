@@ -7,7 +7,7 @@ var styles = {picture:
                {width:'100%'}
                }
 
-export default class AppContainer extends Component {
+export default class Home extends Component {
 
   render() {
     const {children} = this.props;
@@ -19,10 +19,10 @@ export default class AppContainer extends Component {
   }
 }
 
-AppContainer.propTypes = {
+Home.propTypes = {
   children: React.PropTypes.node,
 }
 
-AppContainer.contextTypes = {
+Home.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
