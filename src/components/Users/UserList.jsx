@@ -32,25 +32,29 @@ rp(options)
       <Table responsive striped bordered condensed hover>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Tier</th>
-            <th>Cost</th>
-            <th>Start Date</th>
-            <th>End Date</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Tier</th>
+			<th>Cost</th>
+			<th>Billing Type</th>
+			<th>Start Date</th>
+			<th>End Date</th>
           </tr>
         </thead>
         <tbody>
           {this.state.users.map(function(user, i) {
             return (
               <UserItem
-                key={user.uuid}
-                name={user.first_name}
-                email={user.email}
-                tier={user.billing_type}
-                cost={user.cost}
-                start={user.start_date}
-                end={user.end_date}
+				key={user.uuid}
+				first_name={user.first_name}
+				last_name={user.last_name}
+				email={user.email}
+				name={user.name}
+				cost={'$' + user.cost}
+				billing_type={user.billing_type}
+				start_date={user.start_date}
+				end_date={user.end_date}
               />
             );
           })}
