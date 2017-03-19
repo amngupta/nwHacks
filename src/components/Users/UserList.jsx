@@ -10,23 +10,23 @@ state = {
 	users: []
 }
 componentWillMount(){
+	let self = this;
+	var options = {
+		uri: 'http://kimchifriedrice.mybluemix.net/company/101',
+		headers: {
+			'User-Agent': 'Request-Promise'
+		},
+		json: true // Automatically parses the JSON string in the response
+	};
 
-var options = {
-    uri: 'http://kimchifriedrice.mybluemix.net/company/101',
-    headers: {
-        'User-Agent': 'Request-Promise'
-    },
-    json: true // Automatically parses the JSON string in the response
-};
-
-rp(options)
-    .then(function (response) {
-	this.setState({users : response});
-	return 
-  })
-  .catch(err=>{
-	  console.log(err);
-  })
+	rp(options)
+		.then(function (response) {
+		self.setState({users : response});
+		return 
+	})
+	.catch(err=>{
+		console.log(err);
+	})
 }
 
 render()
