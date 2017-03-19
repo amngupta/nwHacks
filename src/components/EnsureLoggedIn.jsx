@@ -71,7 +71,13 @@ export class Login extends Component {
   register = () => {
     // We are not directly collecting the password...?
     // anyway, create an object containing the company's login name?
-
+    let companyInfo = {
+      name: this.name.value,
+      loginID: this.loginID.value,
+      password: this.password.value
+    }
+    console.log(companyInfo)
+    this.login()
   }
 
   cancel = () => {
@@ -103,14 +109,17 @@ export class Login extends Component {
           <FormControl
             type="text"
             placeholder="Company Name"
+            inputRef={ref => this.name = ref}
           />
           <FormControl
             type="text"
             placeholder="Login ID"
+            inputRef={ref => this.loginID = ref}
           />
           <FormControl
             type="password"
             placeholder="Type a password..."
+            inputRef={ref => this.password = ref}
           />
         </FormGroup>
       </form>
